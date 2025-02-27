@@ -25,7 +25,7 @@ def distribution(data, transformed = False):
     """
     
     # Create figure
-    fig = pl.figure(figsize = (11,5));
+    fig = pl.figure(figsize = (11,5))
 
     # Skewed feature plotting
     for i, feature in enumerate(['capital-gain','capital-loss']):
@@ -47,7 +47,9 @@ def distribution(data, transformed = False):
             fontsize = 16, y = 1.03)
 
     fig.tight_layout()
-    fig.show()
+    # Replace fig.show() with pl.show() for better Jupyter compatibility
+    pl.show()
+    
 
 
 def evaluate(results, accuracy, f1):
@@ -123,6 +125,7 @@ def evaluate(results, accuracy, f1):
     pl.show()
     
 
+
 def feature_plot(importances, X_train, y_train):
     
     # Display the five most important features
@@ -130,7 +133,7 @@ def feature_plot(importances, X_train, y_train):
     columns = X_train.columns.values[indices[:5]]
     values = importances[indices][:5]
 
-    # Creat the plot
+    # Create the plot
     fig = pl.figure(figsize = (9, 5))
     pl.title("Normalized Weights for First Five Most Predictive Features", fontsize = 16)
     pl.bar(np.arange(5) - 0.1, values, width = 0.2, align="center", color=colors[0], \
@@ -144,4 +147,5 @@ def feature_plot(importances, X_train, y_train):
     
     pl.legend()
     pl.tight_layout()
-    pl.show()  
+    pl.show()
+    return fig
